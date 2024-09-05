@@ -1,0 +1,19 @@
+{
+  "name": "it-aka-automation",
+  "version": "1.0.0",
+  "description": "Test automatisé avec Selenium et Pytest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anouvene/itaka-selenium-pytest.git"
+  },
+  "author": "Tuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anouvene/itaka-selenium-pytest/issues"
+  },
+  "homepage": "https://github.com/anouvene/itaka-selenium-pytest#readme"
+}
