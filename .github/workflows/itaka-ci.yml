@@ -42,9 +42,13 @@ jobs:
           pip install pytest-html-reporter
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+        run: |
+          using: 'node20'
+          main: 'main.js'
+        #uses: actions/setup-node@v4
+        #with:
+          #node-version: '20'
+        
 
       - name: Install npm dependencies
         run: |
