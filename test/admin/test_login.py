@@ -1,28 +1,30 @@
+import time
 import pytest
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-class TestLogin:
 
-    def test_successful_login(self, driver):
-        # Accéder à la page d'administration du site
+class TestRadioCheck:
+    # Initialiser le navigateur
+    def setup_method(self, method):
+        chrome_options = Options()
+        chrome_options.add_argument("--disable-search-engine-choice-screen")
+        chrome_options.add_argument("--disable-popup-blocking")
+        self.driver = webdriver.Chrome(options=chrome_options)
+        self.vars = {}
 
-        # driver.get("https://inscription.it-akademy.fr/")
-        #
-        # email_input = driver.find_element(By.NAME, "email")
-        # password_input = driver.find_element(By.NAME, "password")
-        # login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
+    def teardown_method(self, method):
+        self.driver.quit()
 
-        # Se connecter
-        # test
-        # test .....
+    def test_radio_check(self):
+        # Ouvrir la page de test
+        self.driver.get("https://demoqa.com/radio-button")
 
-        # email_input.send_keys("a.nouvene@it-students.fr")
-        # password_input.send_keys("jeTeste24$")
-        # login_button.click()
-        #
-        # WebDriverWait(driver, 10).until(EC.title_contains("Dashboard"))
-        #
-        # assert "Dashboard" in driver.title
-        pass
+        # Check yesRadio rario button
+        self.driver.find_element(By.XPATH, "//input[@id='yesRadio']/following-sibling::label").click()
+        time.sleep(1)  # Temporisation de 5 secondes
+
+        # Check impressive rario button
+        self.driver.find_element(By.XPATH, "//input[@id='impressiveRadio']/following-sibling::label").click()
+        time.sleep(1)  # Temporisation de 5 secondes
