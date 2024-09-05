@@ -25,12 +25,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.x'        
 
       - name: Install dependencies
         run: |
@@ -42,12 +42,9 @@ jobs:
           pip install pytest-html-reporter
 
       - name: Install Node.js
-        run: |
-          using: 'node20'
-          main: 'main.js'
-        #uses: actions/setup-node@v4
-        #with:
-          #node-version: '20'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
         
 
       - name: Install npm dependencies
