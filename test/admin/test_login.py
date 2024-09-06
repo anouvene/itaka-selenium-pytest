@@ -14,10 +14,9 @@ class TestLogin:
         login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 
         # Se connecter
-        # test
-        # test .....
         email_input.send_keys("nouvene.antoine@gmail.com")
         password_input.send_keys("hocMotminh82&")
+        driver.execute_script("arguments[0].scrollIntoView();", login_button)
         login_button.click()
 
         # WebDriverWait(driver, 10).until(EC.title_contains("Dashboard"))
