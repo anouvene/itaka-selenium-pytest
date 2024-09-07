@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.chrome.service import Service
 
 import os
 os.environ['WDM_SSL_VERIFY'] = '0'
@@ -10,7 +10,7 @@ os.environ['WDM_SSL_VERIFY'] = '0'
 def driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-search-engine-choice-screen")
-    options.add_argument("--headless")
+    #options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--remote-debugging-port=9222")

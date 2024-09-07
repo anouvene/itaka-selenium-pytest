@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+@pytest.mark.usefixtures("driver")
 class TestLogin:
     def test_successful_login(self, driver):
         # Accéder à la page d'administration du site
@@ -15,8 +15,8 @@ class TestLogin:
         login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 
         # Se connecter
-        email_input.send_keys("nouvene.antoine@gmail.com")
-        password_input.send_keys("hocMotminh82&")
+        email_input.send_keys("email@exemple.fr")
+        password_input.send_keys("password")
         driver.execute_script("arguments[0].scrollIntoView();", login_button)
         login_button.click()
 
@@ -31,4 +31,5 @@ class TestLogin:
         greeting_text = element.text
 
         # Assert that the text is exactly "Bonjour ANTOINE"
-        assert "Bonjour ANTOINE" in greeting_text, f"Expected 'Bonjour ANTOINE', but got '{greeting_text}'"
+        assert "Bonjour ANTOINE" in greeting_text
+        print(greeting_text)
