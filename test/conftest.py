@@ -1,8 +1,10 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
+import os
+os.environ['WDM_SSL_VERIFY'] = '0'
 
 @pytest.fixture(scope="class")
 def driver():
@@ -12,7 +14,9 @@ def driver():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--remote-debugging-port=9222")
-    service = Service(ChromeDriverManager(driver_version="128.0.6613.120").install())
+
+    service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
+    # driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()

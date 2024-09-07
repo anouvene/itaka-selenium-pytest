@@ -1,4 +1,5 @@
 import pytest
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -19,6 +20,15 @@ class TestLogin:
         driver.execute_script("arguments[0].scrollIntoView();", login_button)
         login_button.click()
 
-        # WebDriverWait(driver, 10).until(EC.title_contains("Dashboard"))
-        #
-        # assert "Dashboard" in driver.title
+        time.sleep(2)
+
+        # Wait for the element containing "Bonjour ANTOINE" to be visible
+        element = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//div[text()='Bonjour ANTOINE']"))
+        )
+
+        # Get the text from the located element
+        greeting_text = element.text
+
+        # Assert that the text is exactly "Bonjour ANTOINE"
+        assert "Bonjour ANTOINE" in greeting_text, f"Expected 'Bonjour ANTOINE', but got '{greeting_text}'"
