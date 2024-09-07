@@ -3,8 +3,8 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 
-import os
-os.environ['WDM_SSL_VERIFY'] = '0'
+# import os
+# os.environ['WDM_SSL_VERIFY'] = '0'
 
 @pytest.fixture(scope="class")
 def driver():
